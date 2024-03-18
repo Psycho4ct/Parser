@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>
+        Классификация грамматики
+    </h1>
+    <p>
+        Согласно классификации Хомского, грамматика G[‹Def›] является автоматной. 
+        Правила (1)-(15) относятся к классу праворекурсивных продукций (A → aB | a | ε):
+    </p>
+    <p>1. ‹Def› → 'const' ‹CONST›</p>
+    <p>2. ‹CONST› → '_' ‹TYPE›</p>
+    <p>3. ‹TYPE› → 'char' ‹CHAR›</p>
+    <p>4. ‹CHAR› → '_' ‹ID›</p>
+    <p>5. ‹ID› → letter ‹IDREM›</p>
+    <p>6. ‹IDREM› → (letter|digit) ‹IDREM›</p>
+    <p>7. ‹IDREM› → '['(‹NUMBER›|‹NUMBERREM›)</p>
+    <p>8. ‹NUMBER› → digit ‹NUMBERREM›</p>
+    <p>9. ‹NUMBERREM› → digit ‹NUMBERREM›</p>
+    <p>10. ‹NUMBERREM› → ']' ‹EQUAL›</p>
+    <p>11. ‹EQUAL› → '='‹COMILLAS›</p>
+    <p>12. ‹COMILLAS› → " ‹STRING›</p>
+    <p>13. ‹STRING› → symbol ‹STRINGREM›</p>
+    <p>14. ‹STRINGREM› → (symbol ‹STRINGREM›|"‹END›)</p>
+    <p>15. ‹END› → ;</p>
+</body>
+</html>

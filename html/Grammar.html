@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>
+        Грамматика
+    </h1>
+    <p>
+        Определим грамматику для объявление массива символов с инициализацией строковой константой на языке С G[‹Def›] в нотации Хомского с продукциями P:
+    </p>
+    <p>1. ‹Def› → 'const' ‹CONST›</p>
+    <p>2. ‹CONST› → '_' ‹TYPE›</p>
+    <p>3. ‹TYPE› → 'char' ‹CHAR›</p>
+    <p>4. ‹CHAR› → '_' ‹ID›</p>
+    <p>5. ‹ID› → letter ‹IDREM›</p>
+    <p>6. ‹IDREM› → (letter|digit) ‹IDREM›</p>
+    <p>7. ‹IDREM› → '['(‹NUMBER›|‹NUMBERREM›)</p>
+    <p>8. ‹NUMBER› → digit ‹NUMBERREM›</p>
+    <p>9. ‹NUMBERREM› → digit ‹NUMBERREM›</p>
+    <p>10. ‹NUMBERREM› → ']' ‹EQUAL›</p>
+    <p>11. ‹EQUAL› → '='‹COMILLAS›</p>
+    <p>12. ‹COMILLAS› → " ‹STRING›</p>
+    <p>13. ‹STRING› → symbol ‹STRINGREM›</p>
+    <p>14. ‹STRINGREM› → (symbol ‹STRINGREM›|"‹END›)</p>
+    <p>15. ‹END› → ;</p>
+    <p>
+        - letter → “a” | “b” | “c” | ... | “z” | “A” | “B” | “C” | ... | “Z”<br />
+        - digit → “0” | “1” | “2” | “3” | “4” | “5” | “6” | “7” | “8” | “9”<br />
+        - symbol -> Любой символ из таблицы ASCII кроме двойных и одинарных ковычек<br />
+        Следуя введенному формальному определению грамматики, представим G[‹Def›] ее составляющими:<br />
+        - Z = ‹Def›;<br />
+        - V<sub>T</sub> = {a, b, c, ..., z, A, B, C, ..., Z, _, \n, \t, 1, 2, 3, 4, 5, 6, 7, 8, 9};<br />
+        - V<sub>N</sub> = {‹Def›, ‹CONST›, ‹TYPE›, ‹CHAR›, ‹ID› , ‹IDREM›, ‹NUMBER› , ‹NUMBERREM› , ‹EQUAL› , ‹COMILLAS› , ‹STRING› , ‹STRINGREM› , ‹END›}.
+    </p>
+</body>
+</html>

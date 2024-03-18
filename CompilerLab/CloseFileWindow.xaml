@@ -1,0 +1,25 @@
+﻿<Window x:Class="CompilerLab.CloseFileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompilerLab"
+        mc:Ignorable="d"
+        Title="" Height="150" Width="250" WindowStartupLocation="CenterScreen"  MaxHeight="150" MaxWidth="250" ResizeMode="NoResize" Closing="CloseFileWindow_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="13*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Content="Сохранить изменения" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Button Grid.Row="2" Grid.Column="0" Content="Сохранить" FontSize="15"  VerticalAlignment="Center" Background="Transparent" Click="SaveButton"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="Не сохранять" FontSize="15"  VerticalAlignment="Center" Background="Transparent" Click="CancelButton"></Button>
+
+
+    </Grid>
+</Window>

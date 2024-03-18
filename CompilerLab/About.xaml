@@ -1,0 +1,32 @@
+﻿<Window x:Class="CompilerLab.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompilerLab"
+        mc:Ignorable="d"
+        Title="About" Height="280" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListBox>
+            <Label Content="Текстовый редактор" FontSize="16" Name ="Name"></Label>
+            <ListBoxItem>
+                <TextBlock Text="Разработан" Name ="Developed"></TextBlock>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Студентом НГТУ" Name ="Student"></TextBlock>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Факультета АВТФ" Name ="Fac"></TextBlock>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Группы АВТ-114" Name ="Group"></TextBlock>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="Галкин В.В." Name="Me"></TextBlock>
+            </ListBoxItem>
+            <ListBoxItem HorizontalAlignment="Right">
+                <TextBlock Text="Новосибирск 2023" Name="City"></TextBlock>
+            </ListBoxItem>
+        </ListBox>
+    </Grid>
+</Window>
