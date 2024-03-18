@@ -71,7 +71,7 @@
                     <MenuItem Header="English" Click="SwitchToEnglish"></MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Пуск" Name="RunOption" IsEnabled="False"></MenuItem>
+            <MenuItem Header="Пуск" Name="RunOption" Click="RunButton_Click" IsEnabled="False"></MenuItem>
         </Menu>
 
         <Button Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Создать файл" Click="CreateFileDialog" Name="CreateFileButton">
