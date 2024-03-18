@@ -643,7 +643,7 @@ namespace CompilerLab
         private void MenuItem_Click_7(object sender, RoutedEventArgs e)
         {
             var p = new Process();
-            p.StartInfo = new ProcessStartInfo(@"https://github.com/Psycho4ct")
+            p.StartInfo = new ProcessStartInfo(@"https://github.com/Psycho4ct/Parser")
             {
                 UseShellExecute = true
             };
