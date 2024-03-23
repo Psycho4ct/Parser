@@ -665,7 +665,6 @@ namespace CompilerLab
             Parser parser = new Parser();
             CharChain chain = new CharChain(text);
             int count = 0;
-
             while (chain.Next().Char != '\0')
             {
                 parser.Parse(chain);
@@ -694,8 +693,11 @@ namespace CompilerLab
             else
             {
                 ResultField.Text += "Обнаружено " + count + " ошибок.\r\n";
+                ResultField.Text += "Исходная строка должна была быть:" + parser.rightstring + "\r\n";
+                ResultField.Text += "Исходная строка должна была быть:" + "const " + "char " + parser.idarray +"[" + parser.number+ "]"+ "=" + "\"" + parser.symbolarray + "\""+ ";" +"\r\n";
+
             }
-            
+
         }
 
 

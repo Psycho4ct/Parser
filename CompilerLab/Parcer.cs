@@ -5,6 +5,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CompilerLab
 {
@@ -41,9 +42,11 @@ namespace CompilerLab
         private string id;
         private int state;
         private CharChain chain;
-        private string number = "";
+        public string number = "";
+        public string rightstring = "";
         private List<ParseError> errors;
-        private string symbolarray = "";
+        public string symbolarray = "";
+        public string idarray="";
         public List<ParseError> GetErrors()
         {
             return errors;
@@ -174,6 +177,7 @@ namespace CompilerLab
 
                     handleError("Ожидалось ключевое слово const.", null, c);
                 }
+                rightstring = "const ";
             }
             else
             {
@@ -203,8 +207,10 @@ namespace CompilerLab
             if (isLetter(c.Char))
             {
                 state = 3;
-                
+
                 id += c.Char;
+
+                
             }
             else if (c.Char == ' ')
             {
@@ -213,7 +219,9 @@ namespace CompilerLab
                 if (!id.Equals("char"))
                 {
                     handleError("Ожидалось ключевое слово char.", null, c);
+                    
                 }
+                rightstring += "char ";
             }
             else
             {
@@ -238,8 +246,9 @@ namespace CompilerLab
             if (isLetter(c.Char))
             {
                 state = 5;
+                rightstring += c.Char;
+                idarray += c.Char;
             }
-         
             else
             {
                 String remStr = "";
@@ -263,20 +272,37 @@ namespace CompilerLab
             if (c.Char == '[')
             {
                 state = 6;
+                rightstring += c.Char;
             }
             else if (isLetter(c.Char))
             {
                 state = 5;
+                rightstring += c.Char;
+                idarray += c.Char;
 
             }
             else if (isDigit(c.Char))
             {
                 state = 5;
+                rightstring += c.Char;
+                idarray += c.Char;
 
             }
             else if (c.Char == ' ')
             {
-                state = 5;
+                if (chain.Next().Char == ' ')
+                {
+                    state = 5;
+                }
+                else if (chain.Next().Char == '[')
+                {
+                    state = 5;
+                }
+                else
+                {
+                    handleError("В названии идентификатора не может быть пробела.", null, c);
+                }
+
             }
             else
             {
@@ -300,10 +326,12 @@ namespace CompilerLab
 
             if (c.Char == ']')
             {
+                rightstring += c.Char;
                 state = 7;
             }
             else if (isDigit(c.Char))
             {
+                rightstring += c.Char;
                 number += c.Char;
                 state = 6;
 
@@ -329,6 +357,7 @@ namespace CompilerLab
             Character c = chain.GetNext();
             if (c.Char == '=')
             {
+                rightstring += c.Char;
                 state = 8;
             }
             else if (c.Char == ' ')
@@ -356,6 +385,7 @@ namespace CompilerLab
             Character c = chain.GetNext();
             if (c.Char == '\"')
             {
+                rightstring += c.Char;
                 state = 9;
             }
             else if (c.Char == ' ')
@@ -383,10 +413,12 @@ namespace CompilerLab
             Character c = chain.GetNext();
             if (c.Char == '\"')
             {
+                rightstring += c.Char;
                 state = 10;
             }
             else if (IsSymbol(c.Char))
             {
+                rightstring += c.Char;
                 symbolarray += c.Char;
                 state = 9;
             }
@@ -419,8 +451,8 @@ namespace CompilerLab
                         handleError("Длина строки больше указанного размера массива.", null, c);
                     }
                 }
-
-                    state = 11;
+                rightstring += c.Char;
+                state = 11;
             }
             else if (c.Char == ' ')
             {
