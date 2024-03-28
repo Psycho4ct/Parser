@@ -107,6 +107,10 @@ namespace CompilerLab
                     case 33:
                         state33();
                         break;
+                    case 66:
+                        state66();
+                        break;
+
                 }
             }
 
@@ -319,8 +323,37 @@ namespace CompilerLab
                 handleError("Неожиданный символ: '" + firstIncorrect.Str + "'.", remStr, firstIncorrect);
             }
         }
-
         private void state6()
+        {
+            Character c = chain.GetNext();
+
+            if (isDigit(c.Char))
+            {
+                rightstring += c.Char;
+                number += c.Char;
+                state = 66;
+
+            }
+            else if (c.Char == ']')
+            {
+                handleError("Ожидалась цифра внутри квадратных скобок.", null, c);
+            }
+            else
+            {
+                String remStr = "";
+                Character firstIncorrect = c;
+
+                while (!isDigit(chain.Next().Char))
+                {
+                    if (tryStop()) break;
+                    remStr += c.Char;
+                    c = chain.GetNext();
+                }
+                remStr += c.Char;
+                handleError("Неожиданный символ: '" + firstIncorrect.Str + "'.", remStr, firstIncorrect);
+            }
+        }
+        private void state66()
         {
             Character c = chain.GetNext();
 
@@ -333,7 +366,7 @@ namespace CompilerLab
             {
                 rightstring += c.Char;
                 number += c.Char;
-                state = 6;
+                state = 66;
 
             }
             else
@@ -351,7 +384,6 @@ namespace CompilerLab
                 handleError("Неожиданный символ: '" + firstIncorrect.Str + "'.", remStr, firstIncorrect);
             }
         }
-
         private void state7()
         {
             Character c = chain.GetNext();
