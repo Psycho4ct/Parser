@@ -348,7 +348,7 @@ namespace CompilerLab
                 Character firstIncorrect = c;
              
 
-                while (!isDigit(chain.Next().Char))
+                while (!isDigit(chain.Next().Char) && chain.Next().Char != ']')
                 {
                     if (tryStop()) break;
                     remStr += c.Char;
