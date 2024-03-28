@@ -693,7 +693,7 @@ namespace CompilerLab
             else
             {
                 ResultField.Text += "Обнаружено " + count + " ошибок.\r\n";
-                ResultField.Text += "Исходная строка должна была быть:" + parser.rightstring + "\r\n";
+                //ResultField.Text += "Исходная строка должна была быть:" + parser.rightstring + "\r\n";
                 
                 if (parser.number == ""||parser.numint < parser.symbolarray.Length)
                 {

@@ -9,9 +9,11 @@
 
 Пример допустимых строк:
 ```
-const char str[]="Hello world";
+const char str[30]="Hello world";
 
 const char str[7]="123321"
+
+const char str[0]=""
 ```
 
 ## Разработанная грамматика
@@ -22,7 +24,7 @@ const char str[7]="123321"
 1. ‹CHAR› → '_' ‹ID›
 1. ‹ID› → letter ‹IDREM›
 1. ‹IDREM› → (letter|digit) ‹IDREM›
-1. ‹IDREM› → '['(‹NUMBER›|‹NUMBERREM›)
+1. ‹IDREM› → '[' ‹NUMBER›
 1. ‹NUMBER› → digit ‹NUMBERREM›
 1. ‹NUMBERREM› → digit ‹NUMBERREM›
 1. ‹NUMBERREM› → ']' ‹EQUAL›
@@ -52,7 +54,7 @@ const char str[7]="123321"
 1. ‹CHAR› → '_' ‹ID›
 1. ‹ID› → letter ‹IDREM›
 1. ‹IDREM› → (letter|digit) ‹IDREM›
-1. ‹IDREM› → '['(‹NUMBER›|‹NUMBERREM›)
+1. ‹IDREM› → '[' ‹NUMBER›
 1. ‹NUMBER› → digit ‹NUMBERREM›
 1. ‹NUMBERREM› → digit ‹NUMBERREM›
 1. ‹NUMBERREM› → ']' ‹EQUAL›
@@ -73,11 +75,11 @@ const char str[7]="123321"
 
 ## Тестовые примеры
 
-1. <p align="center"><img src="images/testp1.png"></p>
-1. <p align="center"><img src="images/testp2.png"></p>
-1. <p align="center"><img src="images/testp3.png"></p>
-1. <p align="center"><img src="images/testp4.png"></p>
-1. <p align="center"><img src="images/testp5.png"></p>
+1. <p align="center"><img src="images/testpp1.png"></p>
+1. <p align="center"><img src="images/testpp2.png"></p>
+1. <p align="center"><img src="images/testpp3.png"></p>
+1. <p align="center"><img src="images/testpp4.png"></p>
+1. <p align="center"><img src="images/testpp5.png"></p>
 
 ## Диаграмма состояний сканера
 
