@@ -11,9 +11,9 @@
 ```
 const char str[30]="Hello world";
 
-const char str[7]="123321"
+const char str[7]="123321";
 
-const char str[0]=""
+const char str[0]="";
 ```
 
 ## Разработанная грамматика
