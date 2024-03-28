@@ -46,7 +46,8 @@ namespace CompilerLab
         public string rightstring = "";
         private List<ParseError> errors;
         public string symbolarray = "";
-        public string idarray="";
+        public string idarray = "";
+        public int numint;
         public List<ParseError> GetErrors()
         {
             return errors;
@@ -337,11 +338,15 @@ namespace CompilerLab
             else if (c.Char == ']')
             {
                 handleError("Ожидалась цифра внутри квадратных скобок.", null, c);
+                rightstring += '0';
+                rightstring += c.Char;
+                state = 7;
             }
             else
             {
                 String remStr = "";
                 Character firstIncorrect = c;
+             
 
                 while (!isDigit(chain.Next().Char))
                 {
@@ -477,8 +482,8 @@ namespace CompilerLab
             {
                 if (number != "")
                 {
-                    int num = Int32.Parse(number);
-                    if (num < symbolarray.Length)
+                    numint = Int32.Parse(number);
+                    if (numint < symbolarray.Length)
                     {
                         handleError("Длина строки больше указанного размера массива.", null, c);
                     }
