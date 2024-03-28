@@ -548,19 +548,32 @@ namespace CompilerLab
 
         private void CallHelp(object sender, RoutedEventArgs e)
         {
-            helpwindow.Show();
-
+            //helpwindow.Show();
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(@"..\..\..\html\HTMLPage1.html")
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+            p.Close();
         }
         private void CallTask(object sender, RoutedEventArgs e)
         {
-            Task.Show();
-
+            //Task.Show();
+            
         }
 
         private void ShowAbout(object sender, RoutedEventArgs e)
         {
-              
-            AboutWindow.Show();
+
+            //AboutWindow.Show();
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(@"..\..\..\html\About.html")
+            {
+                UseShellExecute = true
+            };
+            p.Start();
+            p.Close();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
