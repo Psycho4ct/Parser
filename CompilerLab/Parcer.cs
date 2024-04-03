@@ -174,6 +174,11 @@ namespace CompilerLab
 
                 id += c.Char;
             }
+            else if (id.Equals("char"))
+            {
+                state = 4;
+                handleError("Ожидалось ключевое слово const.", null, c);
+            }
             else if (c.Char == ' ')
             {
                 state = 33;
@@ -214,8 +219,12 @@ namespace CompilerLab
                 state = 3;
 
                 id += c.Char;
-
-                
+               
+            }
+            else if (!id.Equals("char"))
+            {
+                state = 5;
+                handleError("Ожидалось ключевое слово char.", null, c);
             }
             else if (c.Char == ' ')
             {
@@ -233,7 +242,7 @@ namespace CompilerLab
                 String remStr = "";
                 Character firstIncorrect = c;
 
-                while (!isLetter(chain.Next().Char) && chain.Next().Char != ' ')
+                while (!isLetter(chain.Next().Char) && chain.Next().Char != ' ' && chain.Next().Char != '[')
                 {
                     if (tryStop()) break;
                     remStr += c.Char;
@@ -272,6 +281,7 @@ namespace CompilerLab
 
         private void state5()
         {
+
             Character c = chain.GetNext();
 
             if (c.Char == '[')

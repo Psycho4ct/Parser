@@ -712,7 +712,7 @@ namespace CompilerLab
                 {
                     parser.number = parser.symbolarray.Length.ToString();
                 }
-                ResultField.Text += "Исходная строка должна была быть:" + "const " + "char " + parser.idarray +"[" + parser.number+ "]"+ "=" + "\"" + parser.symbolarray + "\""+ ";" +"\r\n";
+               // ResultField.Text += "Исходная строка должна была быть:" + "const " + "char " + parser.idarray +"[" + parser.number+ "]"+ "=" + "\"" + parser.symbolarray + "\""+ ";" +"\r\n";
 
             }
 
