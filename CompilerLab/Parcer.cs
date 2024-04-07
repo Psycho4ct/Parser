@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace CompilerLab
 {
@@ -48,6 +49,7 @@ namespace CompilerLab
         public string symbolarray = "";
         public string idarray = "";
         public int numint;
+        public string idall="";
         public List<ParseError> GetErrors()
         {
             return errors;
@@ -111,6 +113,10 @@ namespace CompilerLab
                     case 66:
                         state66();
                         break;
+                    case 31:
+                        state31();
+                        break;
+
 
                 }
             }
@@ -144,7 +150,7 @@ namespace CompilerLab
             if (isLetter(c.Char))
             {
                 state = 2;
-
+                idall += c.Char;
                 id += c.Char;
             }
             else
@@ -171,8 +177,15 @@ namespace CompilerLab
             {
 
                 state = 2;
-
+                idall += c.Char;
                 id += c.Char;
+            }
+            else if (c.Char == '[')
+            {
+                handleError("Ожидалось ключевое слово const.", null, c);
+                handleError("Ожидалось ключевое слово char.", null, c);
+                state = 6;
+
             }
             else if (id.Equals("char"))
             {
@@ -182,9 +195,9 @@ namespace CompilerLab
             else if (c.Char == ' ')
             {
                 state = 33;
+
                 if (!id.Equals("const"))
                 {
-
                     handleError("Ожидалось ключевое слово const.", null, c);
                 }
                 rightstring = "const ";
@@ -208,8 +221,36 @@ namespace CompilerLab
         private void state33()
         {
             id = "";
-            state = 3;
+            state = 31;
         }
+
+        private void state31()
+        {
+            Character c = chain.GetNext();
+
+            if (isLetter(c.Char))
+            {
+                state = 3;
+                idall += c.Char;
+                id += c.Char;
+            }
+            else
+            {
+                String remStr = "";
+                Character firstIncorrect = c;
+
+                while (!isLetter(chain.Next().Char))
+                {
+                    if (tryStop()) break;
+                    remStr += c.Char;
+                    c = chain.GetNext();
+                }
+                remStr += c.Char;
+                handleError("Ожидалось ключевое слово char.", remStr, firstIncorrect);
+
+            }
+        }
+
         private void state3()
         {
             
@@ -217,19 +258,24 @@ namespace CompilerLab
             if (isLetter(c.Char))
             {
                 state = 3;
-
+                idall += c.Char;
                 id += c.Char;
                
             }
-            else if (!id.Equals("char"))
+            else if (c.Char=='[')
             {
-                state = 5;
+                state = 6;
                 handleError("Ожидалось ключевое слово char.", null, c);
             }
             else if (c.Char == ' ')
             {
                 state = 4;
-
+                Character d = chain.GetNext();
+                if (d.Char == '[')
+                {
+                    state = 6;
+                    
+                }
                 if (!id.Equals("char"))
                 {
                     handleError("Ожидалось ключевое слово char.", null, c);
@@ -268,7 +314,7 @@ namespace CompilerLab
                 String remStr = "";
                 Character firstIncorrect = c;
 
-                while (!isLetter(chain.Next().Char))
+                while (!isLetter(chain.Next().Char)&&c.Char!='[')
                 {
                     if (tryStop()) break;
                     remStr += c.Char;
