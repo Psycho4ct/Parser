@@ -281,8 +281,9 @@ namespace CompilerLab
                     {
                         writer.WriteLine(Input.Text);
                     }
+                    System.Windows.Application.Current.Shutdown();
                 }
-                else if (closeFileWindow.IsCanceled) {  }
+                else if (closeFileWindow.IsCanceled) { System.Windows.Application.Current.Shutdown(); }
                 else
                 {
                     e.Cancel = true;
@@ -299,6 +300,7 @@ namespace CompilerLab
                 condition = "Exit";
                 Condition.Content = condition;
             }
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void Undo(object sender, RoutedEventArgs e)
@@ -665,7 +667,6 @@ namespace CompilerLab
         }
 
 
-
         private void RunButton_Click(object sender, RoutedEventArgs e)
         {
             //string text = Input.Text;
@@ -673,53 +674,74 @@ namespace CompilerLab
             //List<Token> tokens = lexer.Scan(text);
             //dgTokens.ItemsSource = tokens;
 
-            ResultField.Text = "";
+
+
+
+            //ResultField.Text = "";
+            //string text = Input.Text;
+            //Parser parser = new Parser();
+            //CharChain chain = new CharChain(text);
+            //int count = 0;
+            //while (chain.Next().Char != '\0')
+            //{
+            //    parser.Parse(chain);
+
+            //    var errors = parser.GetErrors();
+
+            //    foreach (var error in errors)
+            //    {
+            //        count++;
+
+            //        ResultField.Text += error.Message;
+            //        if (error.IncorrStr != null)
+            //        {
+            //            ResultField.Text += " (Отброшенный фрагмент: '" + error.IncorrStr + "' на позиции: " + error.Idx + ")";
+            //        }
+            //        ResultField.Text += "\r\n";
+
+
+            //    }
+
+            //}
+            //if (count == 0)
+            //{
+            //    ResultField.Text += "Ошибок нет.\r\n";
+            //}
+            //else
+            //{
+            //    ResultField.Text += "Обнаружено " + count + " ошибок.\r\n";
+            //    //ResultField.Text += "Исходная строка должна была быть:" + parser.rightstring + "\r\n";
+
+            //    if (parser.number == ""||parser.numint < parser.symbolarray.Length)
+            //    {
+            //        parser.number = parser.symbolarray.Length.ToString();
+            //    }
+            //   // ResultField.Text += "Исходная строка должна была быть:" + "const " + "char " + parser.idarray +"[" + parser.number+ "]"+ "=" + "\"" + parser.symbolarray + "\""+ ";" +"\r\n";
+
+            //}
+
+
+
             string text = Input.Text;
-            Parser parser = new Parser();
-            CharChain chain = new CharChain(text);
-            int count = 0;
-            while (chain.Next().Char != '\0')
+            try
             {
-                parser.Parse(chain);
 
-                var errors = parser.GetErrors();
-
-                foreach (var error in errors)
-                {
-                    count++;
-
-                    ResultField.Text += error.Message;
-                    if (error.IncorrStr != null)
-                    {
-                        ResultField.Text += " (Отброшенный фрагмент: '" + error.IncorrStr + "' на позиции: " + error.Idx + ")";
-                    }
-                    ResultField.Text += "\r\n";
-
-                
-                }
-
+                var pe = dataGridResult.SelectedValue as ParseError;
+                TetradaParser polishNotationCalculator = new TetradaParser(text);
+                polishNotationCalculator.PrintTetrads();
+                dataGridResult.ItemsSource = polishNotationCalculator.tetradas;
             }
-            if (count == 0)
+            catch (Exception ex)
             {
-                ResultField.Text += "Ошибок нет.\r\n";
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else
-            {
-                ResultField.Text += "Обнаружено " + count + " ошибок.\r\n";
-                //ResultField.Text += "Исходная строка должна была быть:" + parser.rightstring + "\r\n";
-                
-                if (parser.number == ""||parser.numint < parser.symbolarray.Length)
-                {
-                    parser.number = parser.symbolarray.Length.ToString();
-                }
-               // ResultField.Text += "Исходная строка должна была быть:" + "const " + "char " + parser.idarray +"[" + parser.number+ "]"+ "=" + "\"" + parser.symbolarray + "\""+ ";" +"\r\n";
 
-            }
+
+
 
         }
 
-
-
+    
 
 
         public enum TokenType
