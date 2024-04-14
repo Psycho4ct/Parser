@@ -163,14 +163,6 @@
             <ComboBoxItem Content="90"></ComboBoxItem>
             <ComboBoxItem Content="100"></ComboBoxItem>
         </ComboBox>
-        <DataGrid x:Name="dataGridResult" AutoGenerateColumns="False" Grid.Column="10" Grid.ColumnSpan="5" Margin="5,33,10,33" Grid.Row="2">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Op" Binding="{Binding op}" />
-                <DataGridTextColumn Header="arg1" Binding="{Binding arg1}" />
-                <DataGridTextColumn Header="arg2" Binding="{Binding arg2}" />
-                <DataGridTextColumn Header="result" Binding="{Binding result}" />
-            </DataGrid.Columns>
-        </DataGrid>
 
         <Label Name="Condition" Grid.Row="1" Grid.Column="16" Content="Ожидание" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <DataGrid x:Name="dgTokens" HorizontalAlignment="Left" AutoGenerateColumns="False" Width="792" Grid.ColumnSpan="15" Grid.Row="3" Margin="0,9,0,0" Grid.RowSpan="2">
@@ -183,7 +175,15 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Name="ResultField" IsReadOnly="True" Grid.ColumnSpan="15" Grid.Row="3" TextWrapping="Wrap" Text="" Margin="0,11,0,-5" Grid.RowSpan="2"/>
+        <!--<TextBox Name="ResultField" IsReadOnly="True" Grid.ColumnSpan="15" Grid.Row="3" TextWrapping="Wrap" Text="" Margin="0,11,0,-5" Grid.RowSpan="2"/>-->
+        <DataGrid x:Name="dataGridResult" AutoGenerateColumns="False" Grid.ColumnSpan="15" Grid.Row="3" Margin="0,7,0,-2" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Op" Binding="{Binding op}" />
+                <DataGridTextColumn Header="arg1" Binding="{Binding arg1}" />
+                <DataGridTextColumn Header="arg2" Binding="{Binding arg2}" />
+                <DataGridTextColumn Header="result" Binding="{Binding result}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
