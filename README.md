@@ -27,8 +27,8 @@ f=c*-d+a/d
 d=c+c*a-c
 
 ## Тестовые примеры
-<img src="ex1.png">
-<img src="ex2.png">
-<img src="ex3.png">
-<img src="ex4.png">
+<img src="eex1.png">
+<img src="eex2.png">
+<img src="eex3.png">
+<img src="eex4.png">
 
