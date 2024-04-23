@@ -3,6 +3,9 @@
   <Import Project="..\packages\Avalonia.11.0.9\build\Avalonia.props" Condition="Exists('..\packages\Avalonia.11.0.9\build\Avalonia.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{81179CAA-21CF-4D2C-B0FA-1399A273BB0D}</ProjectGuid>
@@ -143,6 +146,7 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="CharChain.cs" />
+    <Compile Include="LexicalAnalyzer.cs" />
     <Compile Include="Parcer.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
