@@ -175,15 +175,15 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <!--<TextBox Name="ResultField" IsReadOnly="True" Grid.ColumnSpan="15" Grid.Row="3" TextWrapping="Wrap" Text="" Margin="0,11,0,-5" Grid.RowSpan="2"/>-->
-        <DataGrid x:Name="dataGridResult" AutoGenerateColumns="False" Grid.ColumnSpan="15" Grid.Row="3" Margin="0,7,0,-2" Grid.RowSpan="2">
+        <TextBox Name="ResultField" IsReadOnly="True" Grid.ColumnSpan="15" Grid.Row="3" TextWrapping="Wrap" Text="" Margin="0,11,0,-5" Grid.RowSpan="2"/>
+        <!--<DataGrid x:Name="dataGridResult" AutoGenerateColumns="False" Grid.ColumnSpan="15" Grid.Row="3" Margin="0,7,0,-2" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Op" Binding="{Binding op}" />
                 <DataGridTextColumn Header="arg1" Binding="{Binding arg1}" />
                 <DataGridTextColumn Header="arg2" Binding="{Binding arg2}" />
                 <DataGridTextColumn Header="result" Binding="{Binding result}" />
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls.Shapes;
+using FSMTextSearch;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -666,9 +667,11 @@ namespace CompilerLab
             p.Close();
         }
 
-
+        private FSM fsm;
         private void RunButton_Click(object sender, RoutedEventArgs e)
         {
+            //LEXER
+
             //string text = Input.Text;
             //Lexer lexer = new Lexer();
             //List<Token> tokens = lexer.Scan(text);
@@ -676,6 +679,7 @@ namespace CompilerLab
 
 
 
+            //   PARSER
 
             //ResultField.Text = "";
             //string text = Input.Text;
@@ -721,19 +725,55 @@ namespace CompilerLab
             //}
 
 
+            //TETRADS
+            //string text = Input.Text;
+            //try
+            //{
 
+            //    var pe = dataGridResult.SelectedValue as ParseError;
+            //    TetradaParser polishNotationCalculator = new TetradaParser(text);
+            //    polishNotationCalculator.PrintTetrads();
+            //    dataGridResult.ItemsSource = polishNotationCalculator.tetradas;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+
+            //REGULARKI
+            //1 TASK
             string text = Input.Text;
-            try
-            {
+            string pattern = @"-?\d+\.?\d*";
+            //2 TASK
+            //string pattern = @"\b[A-Z]{2,}\b";
+            //3 TASK
+            //string pattern = @"\b(2[0-3]|[01]?[0-9]):[0-5]?[0-9]:[0-5]?[0-9]\b";
 
-                var pe = dataGridResult.SelectedValue as ParseError;
-                TetradaParser polishNotationCalculator = new TetradaParser(text);
-                polishNotationCalculator.PrintTetrads();
-                dataGridResult.ItemsSource = polishNotationCalculator.tetradas;
-            }
-            catch (Exception ex)
+
+            //fsm = new FSM(text);
+            //fsm.Run();
+
+            //ResultField.Text = "";
+            //List<string> finds = fsm.GetMatches();
+            //List<string> startpositin = fsm.GetPositions();
+
+            //for (int i = 0; i < finds.Count; i++)
+            //{
+            //    string find = finds[i];
+            //    string startPosition = startpositin[i];
+            //    string result1 = $"{find} {startPosition}\n";
+            //    ResultField.Text += result1;
+            //}
+
+            MatchCollection matches = Regex.Matches(text, pattern);
+
+            ResultField.Text = "";
+
+            foreach (Match match in matches)
             {
-                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                string result = $"Found: {match.Value} at position {match.Index}\n";
+                ResultField.Text += result;
             }
 
 
@@ -741,7 +781,7 @@ namespace CompilerLab
 
         }
 
-    
+
 
 
         public enum TokenType
