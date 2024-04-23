@@ -677,28 +677,28 @@ namespace CompilerLab
             //List<Token> tokens = lexer.Scan(text);
             //dgTokens.ItemsSource = tokens;
 
-            ResultField.Text = "";
-            string text = Input.Text;
-            Parser parser = new Parser();
-            CharChain chain = new CharChain(text);
-            int count = 0;
-            while (chain.Next().Char != '\0')
-            {
-                parser.Parse(chain);
+            //ResultField.Text = "";
+            //string text = Input.Text;
+            //Parser parser = new Parser();
+            //CharChain chain = new CharChain(text);
+            //int count = 0;
+            //while (chain.Next().Char != '\0')
+            //{
+            //    parser.Parse(chain);
 
-                var errors = parser.GetErrors();
+            //    var errors = parser.GetErrors();
 
             //   PARSER
 
-                    ResultField.Text += error.Message;
-                    if (error.IncorrStr != null)
-                    {
-                        ResultField.Text += " (Отброшенный фрагмент: '" + error.IncorrStr + "' на позиции: " + error.Idx + ")";
-                    }
-                    ResultField.Text += "\r\n";
+                //    ResultField.Text += error.Message;
+                //    if (error.IncorrStr != null)
+                //    {
+                //        ResultField.Text += " (Отброшенный фрагмент: '" + error.IncorrStr + "' на позиции: " + error.Idx + ")";
+                //    }
+                //    ResultField.Text += "\r\n";
 
                 
-                }
+                //}
 
             //        ResultField.Text += error.Message;
             //        if (error.IncorrStr != null)
